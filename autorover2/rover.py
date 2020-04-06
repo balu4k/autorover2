@@ -14,9 +14,10 @@ class Rover(object):
 	Motor_L_BUS_2 = 2  
 	
 	#Right motor bus numbers
-	Motor_R_BUS_S = 3
 	Motor_R_BUS_1 = 4  
-	Motor_R_BUS_2 = 5  
+	Motor_R_BUS_2 = 3  
+	Motor_R_BUS_S = 5
+
 
 	_DEBUG = False
 	_DEBUG_INFO = 'DEBUG "rover.py":'
@@ -112,17 +113,22 @@ def test():
 		print("Forward 50")
 		#back_wheels.speed(50)
 	
-		back_wheels.forward()
-		time.sleep(DELAY)
+		# back_wheels.forward()
+		# time.sleep(DELAY)
 
-		print("Forward 100")
+		# print("Forward 100")
 		back_wheels.speed(100)
-		time.sleep(DELAY)
+		# time.sleep(DELAY)
 
 		back_wheels.reverse()
 		time.sleep(DELAY)
 
-		back_wheels.speed(50)
+		# back_wheels.speed(50)
+		# back_wheels.left_turn()
+		# time.sleep(DELAY)
+
+		# back_wheels.right_turn()
+		# time.sleep(DELAY)
 
 
 	except KeyboardInterrupt:
