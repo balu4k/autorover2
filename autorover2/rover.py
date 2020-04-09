@@ -47,7 +47,7 @@ class Rover(object):
 
 	def forward(self):
 		''' Move both wheels forward '''
-		self.speed(50)
+		#self.speed(50)
 		self.left_wheel.forward()
 		self.right_wheel.forward()
 		if self._DEBUG:
@@ -55,7 +55,7 @@ class Rover(object):
 
 	def reverse(self):
 		''' Move both wheels backward '''
-		self.speed(50)
+		#self.speed(50)
 		self.left_wheel.reverse()
 		self.right_wheel.reverse()
 		if self._DEBUG:
@@ -63,14 +63,14 @@ class Rover(object):
 
 	def left_turn(self):
 
-		self.speed(100)
+		#self.speed(100)
 		self.left_wheel.forward()
 		self.right_wheel.reverse()
 		if self._DEBUG:
 			print(self._DEBUG_INFO, 'Running left turn')
 
 	def right_turn(self):
-		self.speed(100)
+		#self.speed(100)
 		self.left_wheel.reverse()
 		self.right_wheel.forward()
 		if self._DEBUG:
