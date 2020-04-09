@@ -1,7 +1,7 @@
 
 from __future__ import division
 import time
-from pca9685 import PCA9685
+from .pca9685 import PCA9685
 
 class Motor(object):
     _DEBUG = False
@@ -53,11 +53,11 @@ class Motor(object):
 
     @speed.setter
     def speed(self, speed):
-		self._debug_("Motor speed set to {0}".format(speed))
-		self._speed = speed
-		self._speed_pulse = int( self._speed * self._MAX_SPEED_PULSE / 100)
-		self._pwm.set_pwm(self._speedbus, 0, self._speed_pulse )
-		self._debug_("Motor speed pulse set to {0}".format(self._speed_pulse))
+        self._debug_("Motor speed set to {0}".format(speed))
+        self._speed = speed
+        self._speed_pulse = int( self._speed * self._MAX_SPEED_PULSE / 100)
+        self._pwm.set_pwm(self._speedbus, 0, self._speed_pulse )
+        self._debug_("Motor speed pulse set to {0}".format(self._speed_pulse))
 
 
 

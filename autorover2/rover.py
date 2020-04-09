@@ -26,6 +26,7 @@ class Rover(object):
         #self._DEBUG = debug
 		self.forward_R = True
 		self.forward_L = True
+		#self.debug = debug
 
 		self.db = filedb.FileDB(db=db)
 
@@ -36,8 +37,17 @@ class Rover(object):
 		self.right_wheel = Motor(self.Motor_R_BUS_1, self.Motor_R_BUS_2, self.Motor_R_BUS_S, debug=self.debug)
 
 
+	def turn(self,angle):
+		if angle < 75:
+			self.right_turn()
+		elif angle > 100 :
+			self.left_turn()
+		else:
+			self.forward()
+
 	def forward(self):
 		''' Move both wheels forward '''
+		self.speed(50)
 		self.left_wheel.forward()
 		self.right_wheel.forward()
 		if self._DEBUG:
@@ -45,18 +55,22 @@ class Rover(object):
 
 	def reverse(self):
 		''' Move both wheels backward '''
+		self.speed(50)
 		self.left_wheel.reverse()
 		self.right_wheel.reverse()
 		if self._DEBUG:
 			print(self._DEBUG_INFO, 'Running both wheels backward')
 
 	def left_turn(self):
+
+		self.speed(100)
 		self.left_wheel.forward()
 		self.right_wheel.reverse()
 		if self._DEBUG:
 			print(self._DEBUG_INFO, 'Running left turn')
 
 	def right_turn(self):
+		self.speed(100)
 		self.left_wheel.reverse()
 		self.right_wheel.forward()
 		if self._DEBUG:
@@ -108,7 +122,7 @@ def test():
 
 	back_wheels = Rover()
 	back_wheels.debug = True
-	DELAY = 3
+	DELAY = 2
 	try:
 		print("Forward 50")
 		#back_wheels.speed(50)
@@ -117,10 +131,14 @@ def test():
 		# time.sleep(DELAY)
 
 		# print("Forward 100")
-		back_wheels.speed(100)
+		back_wheels.speed(25)
 		# time.sleep(DELAY)
 
-		back_wheels.reverse()
+		back_wheels.forward()
+		time.sleep(DELAY)
+		back_wheels.right_turn()
+		time.sleep(3)
+		back_wheels.forward()
 		time.sleep(DELAY)
 
 		# back_wheels.speed(50)
